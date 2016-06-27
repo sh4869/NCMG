@@ -14,7 +14,10 @@ public class NotesScript : MonoBehaviour {
 		pos.z -= 1.0f;
 		transform.position = pos;
 	}
-	void onCollisionEnter(Collision collision){
-		Destroy(this.gameObject);
+	void OnCollisionEnter(Collision collision){
+		
+	}	
+	void OnCollisionStay(Collision collision){
+		
 	}
 }
