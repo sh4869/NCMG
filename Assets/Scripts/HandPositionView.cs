@@ -140,7 +140,7 @@ public class HandPositionView : MonoBehaviour
 
                 //座標の調整
                 colorPoint3.y *= -1;
-                colorPoint3.z = -1;
+                colorPoint3.z = -8;
 
                 return colorPoint3;
             }
