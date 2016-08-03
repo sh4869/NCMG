@@ -5,7 +5,7 @@ public class JudgePointScript : MonoBehaviour {
 	public string keyname;
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
 	
 	// Update is called once per frame

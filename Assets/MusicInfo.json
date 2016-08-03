@@ -1,0 +1,22 @@
+{
+    "musicInfos":[
+        {
+            "musicTitle":"Hello,world!",
+            "artistName":"BUMP OF CHICKEN",
+            "musicFilePath": "",
+            "musicArtPath": ""
+        },
+        {
+            "musicTitle":"fire sign",
+            "artistName":"BUMP OF CHICKEN",
+            "musicFilePath": "",
+            "musicArtPath": ""
+        },
+        {
+            "musicTitle":"光について",
+            "artistName":"GRAPEVINE",
+            "musicFilePath": "",
+            "musicArtPath": ""
+        }
+    ]
+}

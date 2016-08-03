@@ -6,6 +6,8 @@ public class MusicInfo {
     // Music Title
     public string musicTitle;
     
+    public string artistName;
+
     // Music File
     public string musicFilePath;
 
