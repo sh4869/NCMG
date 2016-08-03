@@ -17,6 +17,7 @@ public class MusicSelectionObjectScript : MonoBehaviour {
 
 	private Vector3 musicTitleTextPositon = new Vector3(-4.5f,2.0f,-1.0f);
 	private Vector3 artistTitleTextPosition = new Vector3(-3.0f,0.7f,-1.0f);
+	
 	// Use this for initialization
 	void Start () {
 		if(backGroundObject == null){
@@ -44,7 +45,7 @@ public class MusicSelectionObjectScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 	void Awake(){
 		Start();
