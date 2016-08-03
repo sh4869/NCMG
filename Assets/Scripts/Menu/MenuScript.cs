@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -8,6 +9,7 @@ using System.Text;
 public class MenuScript : MonoBehaviour {
 	public string musicsInfoJsonPath;
 
+	public static MusicInfo SelectMusic = new MusicInfo();
 	public Transform musicSelectionObjectPrefab;
 	// Use this for initialization
 	private List<GameObject> musicSelectionObjects = new List<GameObject>();
@@ -61,6 +63,10 @@ public class MenuScript : MonoBehaviour {
 			var x = Input.GetAxis("Vertical");
 			if(x != 0) MoveMusicSelection(x > 0);
 			oldframeCount = Time.frameCount;
+		}
+		if(Input.GetKeyDown("return")){
+			SelectMusic = this.infos.musicInfos[this.currentMusic];
+			SceneManager.LoadScene("Main");
 		}
 	}
 	void MoveMusicSelection(bool up){
