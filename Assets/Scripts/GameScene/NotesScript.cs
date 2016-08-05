@@ -4,16 +4,18 @@ using System.Collections;
 public class NotesScript : MonoBehaviour
 {
 
-    int[,] positions = new int[,] { { 5, 5 }, { -5, 5 }, { 5, -5 }, { -5, -5 } };
+    int[,] positions = new int[,] { { 5, 5 }, { -5, 5 }, { 5, -3 }, { -5, -3 } };
     private float startTime;
     float time = 1;
     private Vector3 startPosition,endPosition;
     private bool startMovingToXY = false;
+    public static int removeNotesNum = 0;
     // Use this for initialization
     void Start()
     {
         int space = Random.Range(0, 4);
 		endPosition = new Vector3(positions[space, 0],positions[space, 1],-10);
+        this.gameObject.transform.Rotate(new Vector3(90,0,0));
     }
 
     // Update is called once per frame
@@ -46,9 +48,7 @@ public class NotesScript : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         Destroy(this.gameObject);
-    }
-    void OnCollisionStay(Collision collision)
-    {
-
+        NotesScript.removeNotesNum++;
+        Debug.Log("Hit");
     }
 }

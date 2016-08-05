@@ -4,7 +4,7 @@ using System.Collections;
 public class NotesOriginatingPointScript : MonoBehaviour {
 	public Transform notes;
 
-	private int currentNotesNum = 0;
+	public static int currentNotesNum = 0;
 	// Use this for initialization
 	void Start () {
 		

@@ -8,8 +8,5 @@ public class MusicInfo {
     
     public string artistName;
 
-    // Music File
-    public string musicFilePath;
-
     public string musicArtPath;
 }

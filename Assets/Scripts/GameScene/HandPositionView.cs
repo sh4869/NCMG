@@ -102,9 +102,9 @@ public class HandPositionView : MonoBehaviour
         {
             GameObject jointObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
             Rigidbody jointObjRigidBody = jointObj.AddComponent<Rigidbody>();
-            jointObjRigidBody.mass = 5;
+            jointObjRigidBody.mass = 1;
 
-            jointObj.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            jointObj.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
             jointObj.name = jt.ToString();
             jointObj.transform.parent = body.transform;
         }
@@ -140,7 +140,7 @@ public class HandPositionView : MonoBehaviour
 
                 //座標の調整
                 colorPoint3.y *= -1;
-                colorPoint3.z = -8;
+                colorPoint3.z = -6;
 
                 return colorPoint3;
             }
