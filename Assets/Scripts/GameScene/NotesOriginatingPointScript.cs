@@ -7,7 +7,7 @@ public class NotesOriginatingPointScript : MonoBehaviour {
 	private int currentNotesNum = 0;
 	// Use this for initialization
 	void Start () {
-		Debug.Log(MenuScript.SelectMusic.artistName);
+		
 	}
 	
 	// Update is called once per frame

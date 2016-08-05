@@ -45,7 +45,7 @@ public class NotesScript : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        Destroy(this);
+        Destroy(this.gameObject);
     }
     void OnCollisionStay(Collision collision)
     {
