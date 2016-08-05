@@ -9,7 +9,6 @@ using System.Text;
 public class MenuScript : MonoBehaviour {
 	public string musicsInfoJsonPath;
 
-	public static MusicInfo SelectMusic = new MusicInfo();
 	public Transform musicSelectionObjectPrefab;
 	// Use this for initialization
 	private List<GameObject> musicSelectionObjects = new List<GameObject>();
@@ -23,6 +22,7 @@ public class MenuScript : MonoBehaviour {
 	private int currentMusic = 0;
 	private List<Vector3> positions = new List<Vector3>();
 	private int oldframeCount = 0;
+
 	void Start () {
 		this.infos = JsonUtility.FromJson<MusicInfos>(ReadJson());
 		this.createMusicSelectionObjects();
@@ -56,7 +56,8 @@ public class MenuScript : MonoBehaviour {
             filetext += "\n";
         }
 		return filetext;
-	}	
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if(Time.frameCount - oldframeCount > 10){
@@ -65,10 +66,11 @@ public class MenuScript : MonoBehaviour {
 			oldframeCount = Time.frameCount;
 		}
 		if(Input.GetKeyDown("return")){
-			SelectMusic = this.infos.musicInfos[this.currentMusic];
+			GameManager.SelectMusic = this.infos.musicInfos[this.currentMusic];
 			SceneManager.LoadScene("Main");
 		}
 	}
+
 	void MoveMusicSelection(bool up){
 		int max = musicSelectionObjects.Count - 1;
 		if(up){

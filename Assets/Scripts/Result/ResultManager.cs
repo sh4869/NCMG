@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class ResultManager : MonoBehaviour {
 	public Transform TextObject;
 	public Transform BackGroundObject;
+
 	private GameObject scoreText;
 	private GameObject resultText;
 	private GameObject musicText;
@@ -36,7 +37,7 @@ public class ResultManager : MonoBehaviour {
 
 	void SetUpMusicText() {
 		this.musicText = Instantiate(this.TextObject).gameObject;
-		MusicInfo info = MenuScript.SelectMusic;
+		MusicInfo info = GameManager.SelectMusic;
 		this.musicText.GetComponent<TextManager>().UpdateText(info.musicTitle + " - " + info.artistName);
 		this.musicText.GetComponent<TextManager>().UpdateSize(30);
 		this.musicText.GetComponent<TextManager>().UpdateColor(new Color(0,133,171,255));
@@ -47,7 +48,7 @@ public class ResultManager : MonoBehaviour {
 	void Update () {
 		if(Input.GetKeyDown("return")){
 			GameManager.Score = 0;
-			MenuScript.SelectMusic = null;
+			GameManager.SelectMusic = null;
 			SceneManager.LoadScene("Title");
 		}
 	}
