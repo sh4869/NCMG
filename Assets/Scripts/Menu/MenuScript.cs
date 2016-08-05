@@ -22,10 +22,15 @@ public class MenuScript : MonoBehaviour {
 	private int currentMusic = 0;
 	private List<Vector3> positions = new List<Vector3>();
 	private int oldframeCount = 0;
-
+	
+	private AudioSource source;
+	private AudioClip changeSE;
 	void Start () {
 		this.infos = JsonUtility.FromJson<MusicInfos>(ReadJson());
 		this.createMusicSelectionObjects();
+		source = this.gameObject.AddComponent<AudioSource>();
+		changeSE = (AudioClip)Resources.Load("change");
+		source.clip = changeSE;
 	}
 
 	void createMusicSelectionObjects(){
@@ -52,8 +57,6 @@ public class MenuScript : MonoBehaviour {
             }
         } catch (Exception e){
 			Debug.Log(e);
-            // 改行コード
-            filetext += "\n";
         }
 		return filetext;
 	}
@@ -79,8 +82,6 @@ public class MenuScript : MonoBehaviour {
 			} else {
 				currentMusic += 1;
 			}
-
-			Debug.Log(currentMusic);
 			for(int i = 0;i <= max;i++){
 				if(currentMusic < i){
 					musicSelectionObjects[i].transform.position = positions[i - currentMusic];	
@@ -106,5 +107,6 @@ public class MenuScript : MonoBehaviour {
 				}
 			}
 		}
+		this.source.Play();
 	}
 }

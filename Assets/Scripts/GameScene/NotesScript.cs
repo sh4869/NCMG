@@ -4,51 +4,54 @@ using System.Collections;
 public class NotesScript : MonoBehaviour
 {
 
-    int[,] positions = new int[,] { { 5, 5 }, { -5, 5 }, { 5, -3 }, { -5, -3 } };
     private float startTime;
-    float time = 1;
-    private Vector3 startPosition,endPosition;
+    float time = 0.5f;
+    private Vector3 startPosition, endPosition;
     private bool startMovingToXY = false;
     public static int removeNotesNum = 0;
     // Use this for initialization
     void Start()
     {
-        int space = Random.Range(0, 4);
-		endPosition = new Vector3(positions[space, 0],positions[space, 1],-10);
-        this.gameObject.transform.Rotate(new Vector3(90,0,0));
-    }
 
+        float rand = Random.Range(0f, 360f);
+        endPosition = new Vector3(8.0f * Mathf.Sin(rand * (Mathf.PI * 180)), 8.0f * Mathf.Cos(rand * (Mathf.PI * 180)), -5f);
+        this.gameObject.transform.Rotate(new Vector3(90, 0, 0));
+    }
+    void OnEnable()
+    {
+        if (time <= 0)
+        {
+            transform.position = endPosition;
+            enabled = false;
+            Destroy(this.gameObject);
+            return;
+        }
+
+        startTime = Time.timeSinceLevelLoad;
+        startPosition = transform.position;
+    }
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos = transform.position;
-        if (pos.z == endPosition.z)
+        var diff = Time.timeSinceLevelLoad - startTime;
+        if (diff > time)
         {
+            transform.position = endPosition;
+            enabled = false;
             Destroy(this.gameObject);
         }
-        else if (pos.z < 5)
-        {
-            if (!startMovingToXY)
-            {
-                startTime = Time.timeSinceLevelLoad;
-                startPosition = transform.position;
-                startMovingToXY = true;
-            } 
-			var diff = Time.timeSinceLevelLoad - startTime;
-			var rate = diff / time;
-			pos = Vector3.Lerp(startPosition,endPosition,rate);
-        }
-        else
-        {
-            pos.z -= 0.5f;
-        }
+        var rate = diff / time;
+        //var pos = curve.Evaluate(rate);
+        transform.position = Vector3.Lerp(startPosition, endPosition, rate);
+        //transform.position = Vector3.Lerp (startPosition, endPosition, pos);
 
-        transform.position = pos;
     }
+
     void OnCollisionEnter(Collision collision)
     {
         Destroy(this.gameObject);
         NotesScript.removeNotesNum++;
         Debug.Log("Hit");
+        Singleton<SEPlayer>.instance.Play();
     }
 }

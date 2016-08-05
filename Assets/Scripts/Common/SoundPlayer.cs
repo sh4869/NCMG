@@ -19,6 +19,7 @@ public class SoundPlayer : MonoBehaviour {
 			source = soundPlayerObject.AddComponent<AudioSource>();
 		}
 		source.clip = clip;
+		source.volume = 0.8f;
 		source.Play();
 	}
 

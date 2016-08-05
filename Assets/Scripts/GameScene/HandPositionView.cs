@@ -5,6 +5,7 @@ using Kinect = Windows.Kinect;
 
 public class HandPositionView : MonoBehaviour
 {
+    public Transform HandObject;
     public GameObject ColorBodySourceManager;
 
     private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
@@ -100,9 +101,7 @@ public class HandPositionView : MonoBehaviour
     {
         foreach(var jt in handtypes)
         {
-            GameObject jointObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            Rigidbody jointObjRigidBody = jointObj.AddComponent<Rigidbody>();
-            jointObjRigidBody.mass = 1;
+            GameObject jointObj = Instantiate(this.HandObject).gameObject;
 
             jointObj.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
             jointObj.name = jt.ToString();
@@ -140,7 +139,7 @@ public class HandPositionView : MonoBehaviour
 
                 //座標の調整
                 colorPoint3.y *= -1;
-                colorPoint3.z = -6;
+                colorPoint3.z = -5;
 
                 return colorPoint3;
             }
